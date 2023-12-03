@@ -41,8 +41,7 @@ fn parse_game2(l: &str) -> u32 {
     let split_colon = l.split(": ").collect_vec();
     let game = split_colon[1].trim().split("; ").collect_vec();
     let (mut red, mut green, mut blue) = (0, 0, 0);
-    game
-        .iter()
+    game.iter()
         .map(|x| {
             let split_comma = x.split(", ").collect_vec();
             split_comma

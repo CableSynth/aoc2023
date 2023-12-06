@@ -36,7 +36,11 @@ pub fn solution() -> (usize, usize) {
             };
             // println!("i: {}", i);
             let undertest = card_num[index];
-            card_num.get_mut((index + 1)..=i).unwrap_or(&mut[]).iter_mut().for_each(|c| *c += undertest );
+            card_num
+                .get_mut((index + 1)..=i)
+                .unwrap_or(&mut [])
+                .iter_mut()
+                .for_each(|c| *c += undertest);
             index += 1;
             // println!("{:?}", card_num);
             if nums == 0 {

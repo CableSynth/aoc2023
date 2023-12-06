@@ -1,7 +1,7 @@
 use std::iter::repeat;
 
 use itertools::Itertools;
-const TEST_INPUT: &str = include_str!("../data/day04/test.txt");
+// const TEST_INPUT: &str = include_str!("../data/day04/test.txt");
 const REAL_INPUT: &str = include_str!("../data/day04/input.txt");
 
 pub fn solution() -> (usize, usize) {

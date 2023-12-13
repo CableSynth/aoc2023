@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::collections::BinaryHeap;
 
 use itertools::Itertools;
 const TEST_INPUT: &str = include_str!("../data/day07/test.txt");
@@ -12,6 +12,7 @@ struct Hand {
 
 impl Ord for Hand {
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        get_hand_strength(self);
         self.bid.cmp(&other.bid)
     }
 }
@@ -24,11 +25,17 @@ impl PartialOrd for Hand {
 }
 
 fn get_hand_strength(hand: &Hand) -> usize {
+    let card_by_count = hand.cards.iter().counts();
+    println!("{:?}", card_by_count  );
+    let counts = card_by_count.values().collect_vec();
+
+    println!("{:?}", counts  );
     let mut cards = hand.cards.to_vec();
     let mut strength = 0;
     let strength = cards.iter().map(|c| card_strength(*c)).collect_vec();
-
-    0
+    match(*counts.iter().max().unwrap_or(&0)) {
+        5 => 5
+    }
 }
 
 fn card_strength(card: char) -> usize {
@@ -44,10 +51,16 @@ fn card_strength(card: char) -> usize {
 
 pub fn solution() -> (usize, usize) {
 
-    let mut cards = TEST_INPUT.lines().map(|l| {
+    let cards = TEST_INPUT.lines().map(|l| {
         let (hand, bid) = l.split_once(" ").unwrap();
-        (hand.chars(), bid.parse::<usize>().unwrap())
+        Hand {
+            cards: hand.chars().collect_vec().try_into().unwrap(),
+            bid: bid.parse().unwrap()
+        }
     }).collect_vec();
+    let cards: BinaryHeap<Hand> = cards.into();
+    println!("vec deq {:?}", cards);
+    println!("top {:?}", cards.iter().next());
     let part1 = 0;
     let part2 = 0;
 

@@ -4,7 +4,6 @@ const REAL_INPUT: &str = include_str!("../data/day07/input.txt");
 
 fn get_hand_strength(cards: &str, is_part2: bool) -> (usize, usize) {
     let card_by_count = cards.chars().counts();
-    println!("{:?}", card_by_count);
     let counts = card_by_count
         .iter()
         .filter(|&(&k, _)| k != 'J' || !is_part2)
@@ -19,7 +18,6 @@ fn get_hand_strength(cards: &str, is_part2: bool) -> (usize, usize) {
     let idx = cards
         .chars()
         .fold(0, |acc, c| (acc << 4) + card_strength(c, is_part2));
-    println!("idx: {}", idx);
     let hand_rank = match (*counts.iter().max().unwrap_or(&&0_usize), jack_count) {
         (c, j) if c + j == 5 => 6,
         (c, j) if c + j == 4 => 5,

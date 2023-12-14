@@ -38,4 +38,5 @@ fn main() {
     println!("Day 07");
     let day07_solution = day07::solution();
     println!("Part 1: {}", day07_solution.0);
+    println!("Part 2: {}", day07_solution.1)
 }

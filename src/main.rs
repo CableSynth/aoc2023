@@ -5,6 +5,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 
 fn main() {
     println!("Day 01");
@@ -38,5 +39,9 @@ fn main() {
     println!("Day 07");
     let day07_solution = day07::solution();
     println!("Part 1: {}", day07_solution.0);
-    println!("Part 2: {}", day07_solution.1)
+    println!("Part 2: {}", day07_solution.1);
+
+    println!("Day 08");
+    let day08_solution = day08::solution();
+    println!("Part 1: {}", day08_solution.0);
 }
